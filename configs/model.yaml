@@ -1,0 +1,70 @@
+target: agbd
+uncertainty_column: agbd_se
+
+spatial:
+  crs: EPSG:32629
+  block_size_m: 10000
+  n_splits: 5
+
+model:
+  ridge:
+    alpha: 10.0
+  random_forest:
+    n_estimators: 80
+    min_samples_leaf: 10
+    max_features: 0.7
+    n_jobs: -1
+    random_state: 42
+  hist_gradient_boosting:
+    learning_rate: 0.08
+    max_iter: 160
+    max_leaf_nodes: 31
+    min_samples_leaf: 30
+    l2_regularization: 1.0
+    random_state: 42
+
+models:
+  - ridge
+  - random_forest
+  - hist_gradient_boosting
+
+conformal:
+  alpha: 0.10
+  calibration_fraction: 0.20
+  random_state: 42
+
+validity:
+  k_neighbors: 10
+  quantile_threshold: 0.95
+  max_reference_samples: 20000
+
+saturation:
+  bin_width: 25
+
+compute:
+  # Every validation row is retained. Only model-fitting rows are capped.
+  max_train_samples_per_fold: 120000
+  max_final_train_samples: 200000
+  importance_samples: 10000
+  # Neighborhood reads are I/O-heavy on multi-GB rasters; fixed random subset.
+  support_samples: 1000
+
+rasters:
+  sentinel2: data/raw/sentinel2_tai_features_2020_2024.tif
+  sentinel1: data/raw/sentinel1_tai_features_2020_2024.tif
+  palsar: data/raw/palsar_tai_features_2020_2024.tif
+
+features:
+  exclude:
+    - shot_number
+    - delta_time
+    - longitude
+    - latitude
+    - agbd
+    - agbd_se
+    - relative_se
+    - l4_quality_flag
+    - degrade_flag
+    - predictor_limit_flag
+    - response_limit_flag
+    - beam

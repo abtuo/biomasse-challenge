@@ -1,0 +1,12 @@
+name: tai_southwest_cote_divoire
+roi:
+  west: -7.85
+  south: 4.95
+  east: -6.35
+  north: 6.45
+crs_utm: EPSG:32629
+coverage_scales_m: [100, 250, 500, 1000, 2000, 5000]
+gedi:
+  target: agbd
+  uncertainty: agbd_se
+  max_relative_se: 0.5

@@ -1,0 +1,91 @@
+# Python environments, caches, and packaging
+.venv/
+venv/
+env/
+__pycache__/
+*.py[cod]
+*.egg-info/
+.pytest_cache/
+.ruff_cache/
+.mypy_cache/
+.coverage
+htmlcov/
+build/
+dist/
+.mplconfig/
+
+# IDE and operating-system metadata
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Logs and temporary files
+*.log
+*.tmp
+*.bak
+~$*
+temp/
+tmp/
+
+# Local credentials and environment configuration
+.env
+.env.*
+!.env.example
+*credentials*.json
+*service-account*.json
+*.pem
+*.key
+
+# Local-only data. Keep directory placeholders.
+data/**
+!data/raw/
+!data/raw/.gitkeep
+!data/interim/
+!data/interim/.gitkeep
+!data/processed/
+!data/processed/.gitkeep
+!data/field/
+!data/field/.gitkeep
+
+# Raster and geospatial artifacts
+*.tif
+*.tiff
+*.vrt
+*.gpkg
+*.shp
+*.shx
+*.dbf
+*.prj
+*.cpg
+*.geojson
+
+# Large tabular arrays and fitted models
+*.parquet
+*.feather
+*.joblib
+*.pkl
+*.pickle
+*.npz
+*.npy
+*.zip
+
+# Generated outputs. Keep only placeholders; reports are versioned separately.
+outputs/**
+!outputs/maps/
+!outputs/maps/.gitkeep
+!outputs/models/
+!outputs/models/.gitkeep
+
+# Generated office documents
+*.docx
+*.pptx
+*.pdf
+
+# Earth Engine and other downloaded exports
+exports/
+gee_exports/
+
+# Superseded local prototype retained on disk for reference
+/read.py
